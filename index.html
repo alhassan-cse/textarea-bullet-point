@@ -5,21 +5,26 @@
 
 
 <script>
-$('body').on('focus', '.todolist', function(event) {
-   
-    if (document.getElementById('todolist').value === '') {
-        document.getElementById('todolist').value += '• ';
-    }
-});
+    $('body').on('focus', '.todolist', function(event) {
 
-$('body').on('keyup', '.todolist', function(event) {
-    var keycode = (event.keyCode ? event.keyCode : event.which);
-    if (keycode == '13') {
-        document.getElementById('todolist').value += '• ';
-    }
-    var txtval = document.getElementById('todolist').value;
-    if (txtval.substr(txtval.length - 1) == '\n') {
-        document.getElementById('todolist').value = txtval.substring(0, txtval.length - 1);
-    }
-});
+        const { keyCode, target } = event;
+
+        if (target.value === '') {
+            target.value += '• ';
+        }
+    });
+
+    $('body').on('keyup', '.todolist', function(event) {
+
+        const { keyCode, target } = event;
+
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if (keycode == '13') {
+            target.value += '• ';
+        }
+        var txtval = target.value;
+        if (txtval.substr(txtval.length - 1) == '\n') {
+            target.value = txtval.substring(0, txtval.length - 1);
+        }
+    });
 </script>
