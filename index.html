@@ -1,0 +1,25 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<form>
+  <textarea id="todolist" class="todolist" name="todolist" rows="10" placeholder="Maintain your pending tasks"></textarea>
+</form>
+
+
+<script>
+$('body').on('focus', '.todolist', function(event) {
+   
+    if (document.getElementById('todolist').value === '') {
+        document.getElementById('todolist').value += '• ';
+    }
+});
+
+$('body').on('keyup', '.todolist', function(event) {
+    var keycode = (event.keyCode ? event.keyCode : event.which);
+    if (keycode == '13') {
+        document.getElementById('todolist').value += '• ';
+    }
+    var txtval = document.getElementById('todolist').value;
+    if (txtval.substr(txtval.length - 1) == '\n') {
+        document.getElementById('todolist').value = txtval.substring(0, txtval.length - 1);
+    }
+});
+</script>
